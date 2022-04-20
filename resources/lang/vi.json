@@ -3,5 +3,10 @@
     "English": "Tiếng anh",
     "Login": "Đăng nhập",
     "Logout": "Đăng xuất",
-    "Register": "Đăng ký"
+    "Register": "Đăng ký",
+    "Email Address": "Địa chỉ Email",
+    "Confirm Password": "Xác nhận mật khẩu",
+    "Remember Me": "Nhớ mật khẩu",
+    "Please confirm your password": "Vui lòng xác nhận lại mật khẩu",
+    "Forgot Your Password?": "Quên mật khẩu?"
 }
