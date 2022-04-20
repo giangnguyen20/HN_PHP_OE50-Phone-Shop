@@ -45,6 +45,11 @@
                     </svg>
                 </div>
 
+                <div class=" bg-white dark:bg-gray-800 sm:rounded-lg">
+                    <a href="{{ route('lang', ['lang' => 'vi']) }}" style="color: white;">{{ __('Vietnamese') }}</a>
+                    <a href="{{ route('lang', ['lang' => 'en']) }}"  style="color: white;">{{ __('English') }}</a>
+                </div>
+
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">
