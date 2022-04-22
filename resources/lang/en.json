@@ -3,5 +3,10 @@
     "English": "English",
     "Login": "Login",
     "Logout": "Logout",
-    "Register": "Register"
+    "Register": "Register",
+    "Email Address": "Email Address",
+    "Confirm Password": "Confirm Password",
+    "Remember Me": "Remember Me",
+    "Please confirm your password": "Please confirm your password",
+    "Forgot Your Password?": "Forgot Your Password?"
 }
