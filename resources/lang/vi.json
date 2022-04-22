@@ -8,5 +8,14 @@
     "Confirm Password": "Xác nhận mật khẩu",
     "Remember Me": "Nhớ mật khẩu",
     "Please confirm your password": "Vui lòng xác nhận lại mật khẩu",
-    "Forgot Your Password?": "Quên mật khẩu?"
+    "Forgot Your Password?": "Quên mật khẩu?",
+    "Name": "Tên",
+    "Edit": "Chỉnh sửa",
+    "Delete": "Xóa",
+    "Dashboard": "Bảng điều khiển",
+    "New": "Thêm mới",
+    "Categories": "Danh mục sản phẩm",
+    "submit": "xác nhận",
+    "Name is required!": "Tên không được để trống!",
+    "Successfull!": "Thêm thành công!"
 }
