@@ -8,5 +8,20 @@
     "Confirm Password": "Xác nhận mật khẩu",
     "Remember Me": "Nhớ mật khẩu",
     "Please confirm your password": "Vui lòng xác nhận lại mật khẩu",
-    "Forgot Your Password?": "Quên mật khẩu?"
+    "Forgot Your Password?": "Quên mật khẩu?",
+    "Name": "Tên",
+    "Edit": "Chỉnh sửa",
+    "Delete": "Xóa",
+    "Dashboard": "Bảng điều khiển",
+    "New": "Thêm mới",
+    "Categories": "Danh mục sản phẩm",
+    "submit": "xác nhận",
+    "Name is required!": "Tên không được để trống!",
+    "successful": "Thêm thành công!",
+    "create_successfull": "Thêm thành công",
+    "update_successfull": "Chỉnh sửa thành công",
+    "delete_success": "Xóa thành công",
+    "category.not_found": "Không tìm thấy hãng",
+    "name.unique": "Danh mục đã tồn tại",
+    "name.required": "Danh mục không được trống"
 }

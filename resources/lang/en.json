@@ -8,5 +8,19 @@
     "Confirm Password": "Confirm Password",
     "Remember Me": "Remember Me",
     "Please confirm your password": "Please confirm your password",
-    "Forgot Your Password?": "Forgot Your Password?"
+    "Forgot Your Password?": "Forgot Your Password?",
+    "Name": "Name",
+    "Edit": "Edit",
+    "Delete": "Delete",
+    "Dashboard": "Dashboard",
+    "New": "New",
+    "Categories": "Categories",
+    "submit": "submit",
+    "successful": "Successful!",
+    "create_successfull": "Create successful",
+    "update_successfull": "Update successful",
+    "delete_success": "Delete success",
+    "category.not_found": "Not found category",
+    "name.unique": "Name is already existed",
+    "name.required": "Name is required"
 }
