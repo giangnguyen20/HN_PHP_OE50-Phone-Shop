@@ -23,5 +23,12 @@
     "delete_success": "Xóa thành công",
     "category.not_found": "Không tìm thấy hãng",
     "name.unique": "Danh mục đã tồn tại",
-    "name.required": "Danh mục không được trống"
+    "name.required": "Danh mục không được trống",
+    "Products": "Sản phẩm",
+    "Description": "Mô tả",
+    "Price": "Giá",
+    "Accessories": "Phụ kiện",
+    "Warranty": "Bảo hành",
+    "Color": "Màu",
+    "Status": "Trạng thái"
 }
