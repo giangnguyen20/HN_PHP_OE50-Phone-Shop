@@ -17,5 +17,11 @@
     "Categories": "Danh mục sản phẩm",
     "submit": "xác nhận",
     "Name is required!": "Tên không được để trống!",
-    "Successfull!": "Thêm thành công!"
+    "successful": "Thêm thành công!",
+    "create_successfull": "Thêm thành công",
+    "update_successfull": "Chỉnh sửa thành công",
+    "delete_success": "Xóa thành công",
+    "category.not_found": "Không tìm thấy hãng",
+    "name.unique": "Danh mục đã tồn tại",
+    "name.required": "Danh mục không được trống"
 }

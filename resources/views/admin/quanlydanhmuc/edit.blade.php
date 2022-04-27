@@ -18,11 +18,12 @@
 
 <table class="table">
     <thead>
-        <form action="{{ route('admin.categories.store') }}" method="post">
+        <form action="{{ route('admin.categories.update', $category->id) }}" method="post">
             @csrf
+            @method('PUT')
             <tr>
                 <td>{{ __('Name') }}:</td>
-                <td><input type="text" name="name" required></td>
+                <td><input type="text" name="name" value="{{ $category->name }}" required></td>
             </tr>
             <tr>
                 <td><input type="submit" value="{{ __('submit') }}"></td>
