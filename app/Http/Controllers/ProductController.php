@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Products\UpdateProductRequest;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -62,7 +63,7 @@ class ProductController extends Controller
             $product = Product::select('id', 'name')->where('name', '=', $request->name)->first();
 
             foreach ($files as $key => $file) {
-                $imageName = slugHelper($product->name).'-'.time().'.'.$file->extension();
+                $imageName = slugHelper($product->name). '-' .time(). '.' .$file->extension();
                 $file->move(public_path('images'), $imageName);
                 $data[$key] = [
                     'product_id' => $product->id,
@@ -95,7 +96,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+
+        return view('admin.product.editproduct', compact('product', 'categories'));
     }
 
     /**
@@ -105,9 +109,36 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
-        //
+        $data = [];
+        $files = $request->file('images');
+        $product = Product::findOrFail($id);
+        $product->update([
+            'name' => $request->name,
+            'slug' => slugHelper($request->name),
+            'price' => $request->price,
+            'description' => $request->description,
+            'accessories' => $request->accessories,
+            'warranty' => $request->warranty,
+            'color' => $request->color,
+            'status' => $request->status,
+            'category_id' => $request->category_id,
+        ]);
+        if ($request->hasFile("images")) {
+            foreach ($files as $key => $file) {
+                $imageName = slugHelper($product->name). '-' .time(). '.' .$file->extension();
+                $file->move(public_path('images'), $imageName);
+                $data[$key] = [
+                    'product_id' => $product->id,
+                    'name' => $imageName,
+                ];
+            }
+
+            Image::insert($data);
+        }
+
+        return redirect()->back()->with('messages', __('create_success'));
     }
 
     /**
@@ -118,6 +149,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('admin.products.index')->with('message', __('delete_success'));
     }
 }

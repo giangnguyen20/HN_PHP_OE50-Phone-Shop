@@ -22,28 +22,53 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($products as $key => $product)
-            <tr class="table-primary">
-                <td class="table-active">{{ $product->name }}</td>
-                <td class="table-active">
-                    @foreach ($product->images as $image)
-                        <img src="{{ asset('images/'.$image->name.'') }}" alt="Điện thoại đẹp" width="100px" class="thumbnail">
-                    @endforeach
-                </td>
-                <td class="table-active">{{ $product->slug }}</td>
-                <td class="table-active">{{ $product->description }}</td>
-                <td class="table-active">{{ $product->price }}</td>
-                <td class="table-active">{{ $product->accessories }}</td>
-                <td class="table-active">{{ $product->warranty }}</td>
-                <td class="table-active">{{ $product->color }}</td>
-                <td class="table-active">{{ $product->status }}</td>
-                <td class="table-active">
-                    <a href="" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i> {{ __('Edit') }}</a>
-                </td>
-                <td class="table-active">
-                    <a href="" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                </td>
-            </tr>
+        @foreach ($products as $key => $product)
+        <tr class="table-primary">
+            <td class="table-active">{{ $product->name }}</td>
+            <td class="table-active">
+                @foreach ($product->images as $image)
+                    <img src="{{ asset('images/' . $image->name . '') }}" alt="Điện thoại đẹp" width="100px" class="thumbnail">
+                @endforeach
+            </td>
+            <td class="table-active">{{ $product->slug }}</td>
+            <td class="table-active">{{ $product->description }}</td>
+            <td class="table-active">{{ $product->price }}</td>
+            <td class="table-active">{{ $product->accessories }}</td>
+            <td class="table-active">{{ $product->warranty }}</td>
+            <td class="table-active">{{ $product->color }}</td>
+            <td class="table-active">
+                @if ($product->status)
+                    {{ __('Stocking') }}
+                @else
+                    {{ __('Out of stock') }}
+                @endif
+            </td>
+            <td class="table-active">
+                <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i> {{ __('Edit') }}</a>
+            </td>
+            <td class="table-active">
+                <form action="{{ route('admin.products.destroy', $product->id) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $product->id }}"><i class="fa fa-remove" aria-hidden="true"></i>
+                        {{ __('Delete') }}
+                    </button>
+                    <div class="modal fade" id="exampleModal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">{{ __('Confirm_Modal') }}</h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Cancel') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Confirm') }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </td>
+        </tr>
         @endforeach
     </tbody>
 </table>
