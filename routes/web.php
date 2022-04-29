@@ -6,6 +6,7 @@ use App\Http\Controllers\LangController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,5 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::prefix('admin')->name('admin.')->middleware('checkAdmin')->group(function () {
     Route::get('/index', [AdminController::class, 'index']);
     Route::resource('categories', CategoriesController::class);
+    Route::resource('product', ProductController::class);
 });

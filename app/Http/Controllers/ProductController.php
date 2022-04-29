@@ -2,22 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\Category\CreateCategoryRequest;
-use App\Http\Requests\Category\UpdateCategoryRequest;
 
-class CategoriesController extends Controller
+class ProductController extends Controller
 {
-    const PAGINATION_NUMBER = 5;
-    protected $catrgories;
-
-    public function __construct(Category $catrgories)
-    {
-        $this->catrgories = $catrgories;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -25,11 +16,11 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $category =  DB::table('categories')
+        $products = DB::table('products')
             ->select('*')
             ->paginate(config('product.PAGINATION_NUMBER'));
 
-        return view('admin.quanlydanhmuc.category', compact('category'));
+        return view('admin.product.index', compact('products'));
     }
 
     /**
@@ -39,7 +30,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.quanlydanhmuc.addcategory');
+        //
     }
 
     /**
@@ -48,11 +39,9 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCategoryRequest $request)
+    public function store(Request $request)
     {
-        Category::create($request->all());
-
-        return redirect()->route('admin.categories.index')->with('message', __('create_successfull'));
+        //
     }
 
     /**
@@ -74,9 +63,7 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
-
-        return view('admin.quanlydanhmuc.edit')->with(compact('category'));
+        //
     }
 
     /**
@@ -86,13 +73,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $category = Category::findOrFail($id);
-        $category->name = $request->name;
-        $category->update();
-
-        return redirect()->route('admin.categories.index')->with('message', __('update_successfull'));
+        //
     }
 
     /**
@@ -103,13 +86,6 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        if (Category::find($id)) {
-            $user = Category::find($id);
-            $user->delete();
-        } else {
-            return redirect()->route('admin.categories.index')->with('message', __('category.not_found'));
-        }
-
-        return redirect()->route('admin.categories.index')->with('message', __('delete_success'));
+        //
     }
 }
