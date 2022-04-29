@@ -1,6 +1,6 @@
 {
-    "Vietnamese": "Tiếng việt",
-    "English": "Tiếng anh",
+    "VI": "VI",
+    "EN": "EN",
     "Login": "Đăng nhập",
     "Logout": "Đăng xuất",
     "Register": "Đăng ký",
@@ -30,5 +30,11 @@
     "Accessories": "Phụ kiện",
     "Warranty": "Bảo hành",
     "Color": "Màu",
-    "Status": "Trạng thái"
+    "Status": "Trạng thái",
+    "price.required": "Giá không được để trống",
+    "price.min": "Giá thấp nhất là 0",
+    "price.max": "Giá cao nhất là 1000000000",
+    "warranty.min": "Bảo hành thấp nhấp nhất là 1 tháng",
+    "warranty.max": "Bảo hành nhiều nhất là 24 tháng",
+    "Image": "Ảnh"
 }

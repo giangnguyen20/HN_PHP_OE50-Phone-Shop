@@ -9,7 +9,7 @@
     @endif
     @if (Session::has('error'))
         <div class="alert alert-danger">
-            <div class="text-white">{{ Session::get('message') }}</div>
+            <div class="text-white">{{ Session::get('error') }}</div>
         </div>
     @endif
 </div>
@@ -31,7 +31,7 @@
             <tr class="table-primary">
                 <td class="table-active">{{ $item->name }}</td>
                 <td class="table-active">
-                    <a href="{{ route('admin.categories.edit', $item->id) }}" class="btn btn-edit"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a href="{{ route('admin.categories.edit', $item->id) }}" class="btn btn-warning"><i class="glyphicon glyphicon-edit"> {{ __('Edit') }}</i></a>
                 </td>
                 <td class="table-active">
                     <form action="{{ route('admin.categories.destroy', $item->id) }}" method="POST">

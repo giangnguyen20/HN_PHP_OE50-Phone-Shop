@@ -54,10 +54,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="nav notify-row" id="top_menu">
                 <ul class="nav top-menu">
                     <li>
-                        <a href="{{ route('lang', ['lang' => 'vi']) }}" style="color: white;">{{ __('Vietnamese') }}</a>
+                        <a href="{{ route('lang', ['lang' => 'vi']) }}" style="color: white;">{{ __('VI') }}</a>
                     </li>
                     <li>
-                        <a href="{{ route('lang', ['lang' => 'en']) }}"  style="color: white;">{{ __('English') }}</a>
+                        <a href="{{ route('lang', ['lang' => 'en']) }}"  style="color: white;">{{ __('EN') }}</a>
                     </li>
                 </ul>
             </div>
@@ -67,6 +67,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <img alt="" src="">
                             <span class="username">{{ Auth::user()->fullname }}</span>
                             <b class="caret"></b>
                         </a>
@@ -106,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
 
                         <li>
-                            <a class="active" href="{{ route('admin.product.index') }}">
+                            <a class="active" href="{{ route('admin.products.index') }}">
                                 <span>{{ __('Products') }}</span>
                             </a>
                         </li>

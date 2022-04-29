@@ -32,5 +32,5 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::prefix('admin')->name('admin.')->middleware('checkAdmin')->group(function () {
     Route::get('/index', [AdminController::class, 'index']);
     Route::resource('categories', CategoriesController::class);
-    Route::resource('product', ProductController::class);
+    Route::resource('products', ProductController::class);
 });
