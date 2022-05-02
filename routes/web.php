@@ -19,15 +19,12 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 
 Route::get('lang/{lang}', [LangController::class, 'changeLang'])->name('lang');
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->name('admin.')->middleware('checkAdmin')->group(function () {
     Route::get('/index', [AdminController::class, 'index']);

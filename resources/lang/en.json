@@ -28,5 +28,12 @@
     "price.max": "Price cannot be more than 1000000000",
     "Image": "Image",
     "Confirm_Modal": "Are you sure about this change?",
-    "Dashboard": "Dashboard"
+    "Dashboard": "Dashboard",
+    "products.new": "New products",
+    "intro_shop": "Vietpro Academy always brings satisfaction to customers about product quality, clothes are branded made in Vietnam beautiful in both style and quality, so it will help you become beautiful more beautifu",
+    "Price": "Price",
+    "Search": "Search",
+    "Ha Noi": "Ha Noi",
+    "Service": "Service",
+    "Hotline": "Hotline"
 }
