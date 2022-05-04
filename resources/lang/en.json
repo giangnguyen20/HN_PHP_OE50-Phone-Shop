@@ -1,6 +1,6 @@
 {
-    "Vietnamese": "Vietnamese",
-    "English": "English",
+    "VI": "VI",
+    "EN": "EN",
     "Login": "Login",
     "Logout": "Logout",
     "Register": "Register",
@@ -22,5 +22,9 @@
     "delete_success": "Delete success",
     "category.not_found": "Not found category",
     "name.unique": "Name is already existed",
-    "name.required": "Name is required"
+    "name.required": "Name is required",
+    "price.required": "Price is required",
+    "price.min": "Price cannot be less than 0",
+    "price.max": "Price cannot be more than 1000000000",
+    "Image": "Image"
 }
