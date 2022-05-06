@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categories = Category::all();
+        $products = Product::with('images')
+            ->select('products.*')
+            ->orderBy('created_at', 'ASC')
+            ->paginate(config('product.limit'));
+        
+        return view('home', compact('categories', 'products'));
     }
 }
