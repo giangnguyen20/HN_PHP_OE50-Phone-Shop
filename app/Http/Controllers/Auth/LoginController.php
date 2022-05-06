@@ -49,4 +49,28 @@ class LoginController extends Controller
 
         return route('home');
     }
+
+    public function login(LoginRequest $request)
+    {
+        $compare = Auth::attempt([
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+        ]);
+
+        if ($compare) {
+            if (Auth::user()->role_id == config('auth.roles.admin')
+                && Auth::user()->status == config('auth.status.active')) {
+                return redirect()->route('admin.');
+            } else {
+                if (Auth::user()->status == config('auth.status.active')) {
+                    return redirect()->route('home');
+                } else {
+                    Auth::logout();
+                    return redirect()->route('login')->with('messages', 'user_lock');
+                }
+            }
+        } else {
+            return redirect()->route('login')->with('messages', 'login_fail');
+        }
+    }
 }
