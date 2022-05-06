@@ -34,6 +34,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="{{ asset('bower_components/js/jquery2.0.3.min.js') }}"></script>
     <script src="{{ asset('bower_components/js/raphael-min.js') }}"></script>
     <script src="{{ asset('bower_components/js/morris.js') }}"></script>
+    <script src="{{ asset('bower_components/js/delete.js') }}"></script>
 </head>
 
 <body>

@@ -110,7 +110,12 @@ return [
 
     'roles' => [
         'admin' => 1,
-        'user' => 2
+        'user' => 2,
+    ],
+
+    'status' => [
+        'stocking' => 1,
+        'out_of_stock' => 0,
     ]
 
 ];

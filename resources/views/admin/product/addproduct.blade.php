@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="mess">
-    @if (Session::has('message'))
+    @if (Session::has('messages'))
         <div class="alert alert-success">
-            <div class="text-white">{{ Session::get('message') }}</div>
+            <div class="text-white">{{ Session::get('messages') }}</div>
         </div>
     @endif
     @if ($errors->any())

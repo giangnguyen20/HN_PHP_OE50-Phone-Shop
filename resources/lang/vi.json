@@ -18,8 +18,8 @@
     "submit": "xác nhận",
     "Name is required!": "Tên không được để trống!",
     "successful": "Thêm thành công!",
-    "create_successfull": "Thêm thành công",
-    "update_successfull": "Chỉnh sửa thành công",
+    "create_success": "Thêm thành công",
+    "update_success": "Chỉnh sửa thành công",
     "delete_success": "Xóa thành công",
     "category.not_found": "Không tìm thấy hãng",
     "name.unique": "Danh mục đã tồn tại",
@@ -36,5 +36,8 @@
     "price.max": "Giá cao nhất là 1000000000",
     "warranty.min": "Bảo hành thấp nhấp nhất là 1 tháng",
     "warranty.max": "Bảo hành nhiều nhất là 24 tháng",
-    "Image": "Ảnh"
+    "Image": "Ảnh",
+    "Confirm_Modal": "Bạn có chắc chắn với thay đổi này không?",
+    "Cancel": "Hủy",
+    "Confirm": "Xác nhận"
 }
