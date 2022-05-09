@@ -7,6 +7,7 @@ use App\Http\Controllers\LangController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\UserProductController;
 
 /*
@@ -31,6 +32,7 @@ Route::prefix('admin')->name('admin.')->middleware('checkAdmin')->group(function
     Route::get('/index', [AdminController::class, 'index']);
     Route::resource('categories', CategoriesController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('users', UserAdminController::class);
 });
 
 Route::prefix('user')->name('users.')->group(function () {

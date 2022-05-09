@@ -40,5 +40,9 @@
     "Stocking": "Stocking",
     "Out of stock": "Out of stock",
     "Buy": "Buy",
-    "Details": "Details"
+    "Details": "Details",
+    "Role": "Role",
+    "Phone": "Phone",
+    "Active": "Active",
+    "Block": "Block"
 }
