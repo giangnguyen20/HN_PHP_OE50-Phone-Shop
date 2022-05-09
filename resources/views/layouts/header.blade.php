@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vietpro Mobile Shop</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('bower_components/user/css/cart.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/user/css/success.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/user/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/user/css/home.css') }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,16 +21,38 @@
         <div class="container">
             <div class="row">
                 <div id="logo" class="col-lg-3 col-md-3 col-sm-12">
-                    <a href="#"><img src="{{ asset('bower_components/user/images/logo.png') }}" alt="" /></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('bower_components/user/images/logo.png') }}" alt="" /></a>
                 </div>
-                <div id="search-box" class="col-lg-7 col-md-7 col-sm-12 mt-1">
+                <div id="search-box" class="col-lg-6 col-md-5 col-sm-12 mt-1">
                     <form class="d-flex">
                         <input class="form-control" type="search" placeholder="Tìm kiếm" aria-label="Search">
-                        <button class="btn" type="submit">{{ __('Search') }}</button>
+                        <button class="btn" type="submit">Tìm kiếm</button>
                     </form>
                 </div>
-                <div id="cart-notify" class="col-lg-2 col-md-2 col-sm-12 mt-1">
-                    <a href="#">{{ __('Cart') }} <span>8</span></a>
+                <div id="cart-notify" class="col-lg-3 col-md-3 col-sm-12 mt-1">
+                    @guest
+                        @if (Route::has('login'))
+                            <a class="btn btn-success" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        @endif
+                        |
+                        @if (Route::has('register'))
+                            <a class="btn btn-success" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        @endif
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->fullname }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <form action="{{ route('logout') }}" method="POST" class="dropdown-item">
+                                @csrf
+                                <input type="submit" value="{{ __('logout') }}">
+                            </form>
+                        </div>
+                    </li>
+                    @endif
+                    <a href="{{ route('users.cart.showCart') }}" id="cart">Giỏ hàng <span>{{ Cart::count() }}</span></a>
                     <div class="clear"></div>
                 </div>
                 <div id="menu-collapse" class="navbar navbar-dark">
@@ -38,28 +62,6 @@
                 </div>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-12 mt-1">
-                @guest
-                @if (Route::has('login'))
-                    <a class="btn btn-success" href="{{ route('login') }}">{{ __('Login') }}</a>
-                @endif
-                |
-                @if (Route::has('register'))
-                    <a class="btn btn-success" href="{{ route('register') }}">{{ __('Register') }}</a>
-                @endif
-                @else
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->fullname }}
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <form action="{{ route('logout') }}" method="POST" class="dropdown-item">
-                            @csrf
-                            <input type="submit" value="{{ __('logout') }}">
-                        </form>
-                    </div>
-                </li>
-                @endif
             </div>
         </div>
     </div>

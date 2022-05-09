@@ -17,8 +17,8 @@
     "Categories": "Categories",
     "submit": "submit",
     "successful": "Successful!",
-    "create_successfull": "Create successful",
-    "update_successfull": "Update successful",
+    "create_success": "Create successful",
+    "update_success": "Update successful",
     "delete_success": "Delete success",
     "category.not_found": "Not found category",
     "name.unique": "Name is already existed",
@@ -35,5 +35,15 @@
     "Search": "Search",
     "Ha Noi": "Ha Noi",
     "Service": "Service",
-    "Hotline": "Hotline"
+    "Hotline": "Hotline",
+    "user_lock": "Email has been blocked",
+    "Stocking": "Stocking",
+    "Out of stock": "Out of stock",
+    "Buy": "Buy",
+    "Details": "Details",
+    "All": "All",
+    "qty.min": "The quantity of product must be more than 1",
+    "qty.max": "The quantity of product must be less than 10",
+    "qty.required": "quantity is required",
+    "qty.num": "The number is invalid"
 }

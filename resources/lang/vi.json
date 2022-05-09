@@ -46,5 +46,15 @@
     "Search": "Tìm kiếm",
     "Ha Noi": "Hà Nội",
     "Service": "Dịch vụ",
-    "Hotline": "Hotline"
+    "Hotline": "Hotline",
+    "user_lock": "Tài khoản đã bị khóa",
+    "Stocking": "Còn hàng",
+    "Out of stock": "Hết hàng",
+    "Buy": "Mua",
+    "Details": "Thông tin",
+    "All": "Tất cả",
+    "qty.min": "Số lượng sản phẩm phải lớn hơn hoặc bằng 1",
+    "qty.max": "Số lượng sản phẩm không được quá 10",
+    "qty.required": "Bạn chưa có số lượng sản phẩm",
+    "qty.num": "Số lượng không đúng"
 }
