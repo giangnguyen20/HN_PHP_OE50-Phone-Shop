@@ -4,9 +4,12 @@
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
         <ul id="menu" class="collapse">
+            <li>
+                <a href="{{ route('users.products.index') }}">{{ __('All') }}</a>
+            </li>
             @foreach ($categories as $key => $category)
                 <li>
-                    <a href="#">{{ $category->name }}</a>
+                    <a href="{{ route('users.products.show', $category->id) }}">{{ $category->name }}</a>
                 </li>
             @endforeach
         </ul>

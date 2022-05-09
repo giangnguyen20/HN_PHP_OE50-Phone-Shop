@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div id="logo" class="col-lg-3 col-md-3 col-sm-12">
-                    <a href="#"><img src="{{ asset('bower_components/user/images/logo.png') }}" alt="" /></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('bower_components/user/images/logo.png') }}" alt="" /></a>
                 </div>
                 <div id="search-box" class="col-lg-7 col-md-7 col-sm-12 mt-1">
                     <form class="d-flex">

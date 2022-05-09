@@ -114,8 +114,8 @@ return [
     ],
 
     'status' => [
-        'stocking' => 1,
-        'out_of_stock' => 0,
+        'admin' => 1,
+        'user' => 0,
     ]
 
 ];
