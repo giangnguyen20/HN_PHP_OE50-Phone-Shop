@@ -17,8 +17,8 @@
     "Categories": "Categories",
     "submit": "submit",
     "successful": "Successful!",
-    "create_successfull": "Create successful",
-    "update_successfull": "Update successful",
+    "create_success": "Create successful",
+    "update_success": "Update successful",
     "delete_success": "Delete success",
     "category.not_found": "Not found category",
     "name.unique": "Name is already existed",
@@ -44,5 +44,12 @@
     "Role": "Role",
     "Phone": "Phone",
     "Active": "Active",
-    "Block": "Block"
+    "Block": "Block",
+    "All": "All",
+    "qty.min": "The quantity of product must be more than 1",
+    "qty.max": "The quantity of product must be less than 10",
+    "qty.required": "quantity is required",
+    "qty.num": "The number is invalid",
+    "Update cart": "Update cart",
+    "Total price": "Total price"
 }
