@@ -6,7 +6,7 @@
         <ul id="menu" class="collapse">
             <li><a href="{{ route('users.products.index') }}">{{ __('All') }}</a></li>
             @foreach ($categories as $key => $category)
-                <li><a href="{{ route('users.category', $category->id) }}">{{ $category->name }}</a></li>
+                <li><a href="{{ route('users.showbycategory', $category->id) }}">{{ $category->name }}</a></li>
             @endforeach
         </ul>
     </div>
@@ -22,7 +22,7 @@
             @endforeach
         </div>
         <div id="product-details" class="col-lg-6 col-md-6 col-sm-12">
-            <form action="" method="post">
+            <form action="{{ route('users.cart.addToCart') }}" method="post">
                 @csrf
                 <h1>{{ $product->name }}</h1>
                 <ul>
@@ -41,7 +41,7 @@
                         <input type="number" name="quantity" value="1" min="1" max="10">
                     </li>
                 </ul>
-                <input type="hidden" name="id" value="{{$product->id}}">
+                <input type="hidden" name="id" value="{{ $product->id }}">
                 <div id="add-cart">
                     <button type="submit" class="btn btn-danger">{{ __('Buy') }}</button>
                 </div>
