@@ -53,8 +53,8 @@
             <br>
             <span>{{ __('Status') }}:</span>
             <select name="status">
-                <option @if ($product->status == config('auth.status.stocking')) selected @endif value="{{ config('auth.status.stocking') }}">{{ __('Stocking') }}</option>
-                <option @if ($product->status == config('auth.status.out_of_stock')) selected @endif value="{{ config('auth.status.out_of_stock') }}">{{ __('out of stock') }}</option>
+                <option @if ($product->status == config('product.status.stocking')) selected @endif value="{{ config('product.status.stocking') }}">{{ __('Stocking') }}</option>
+                <option @if ($product->status == config('product.status.out_of_stock')) selected @endif value="{{ config('product.status.out_of_stock') }}">{{ __('Out of stock') }}</option>
             </select>
         </div>
         <div class="col-md-10">

@@ -51,5 +51,9 @@
     "Stocking": "Còn hàng",
     "Out of stock": "Hết hàng",
     "Buy": "Mua",
-    "Details": "Thông tin"
+    "Details": "Thông tin",
+    "Role": "Quyền",
+    "Phone": "Điện thoại",
+    "Active": "Kích hoạt",
+    "Block": "Chặn"
 }

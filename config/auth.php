@@ -114,8 +114,8 @@ return [
     ],
 
     'status' => [
-        'admin' => 1,
-        'user' => 0,
+        'active' => 1,
+        'block' => 2,
     ]
 
 ];

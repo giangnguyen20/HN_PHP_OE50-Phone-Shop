@@ -112,6 +112,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <span>{{ __('Products') }}</span>
                             </a>
                         </li>
+
+                        <li>
+                            <a class="active" href="{{ route('admin.users.index') }}">
+                                <span>{{ __('Users') }}</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- sidebar menu end-->
