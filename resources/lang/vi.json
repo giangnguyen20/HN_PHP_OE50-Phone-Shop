@@ -55,5 +55,12 @@
     "Role": "Quyền",
     "Phone": "Điện thoại",
     "Active": "Kích hoạt",
-    "Block": "Chặn"
+    "Block": "Chặn",
+    "All": "Tất cả",
+    "qty.min": "Số lượng sản phẩm phải lớn hơn hoặc bằng 1",
+    "qty.max": "Số lượng sản phẩm không được quá 10",
+    "qty.required": "Bạn chưa có số lượng sản phẩm",
+    "qty.num": "Số lượng không đúng",
+    "Update cart": "Cập nhật giỏ hàng",
+    "Total price": "Tổng giá"
 }

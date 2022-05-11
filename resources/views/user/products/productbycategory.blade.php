@@ -6,7 +6,7 @@
         <ul id="menu" class="collapse">
             <li><a href="{{ route('users.products.index') }}">{{ __('All') }}</a></li>
             @foreach ($categories as $key => $category)
-                <li><a href="{{ route('users.category', $category->id) }}">{{ $category->name }}</a></li>
+                <li><a href="{{ route('users.showbycategory', $category->id) }}">{{ $category->name }}</a></li>
             @endforeach
         </ul>
     </div>

@@ -9,7 +9,7 @@
             </li>
             @foreach ($categories as $key => $category)
                 <li>
-                    <a href="{{ route('users.products.show', $category->id) }}">{{ $category->name }}</a>
+                    <a href="{{ route('users.showbycategory', $category->id) }}">{{ $category->name }}</a>
                 </li>
             @endforeach
         </ul>
@@ -27,7 +27,7 @@
                 <div class="col-md-4 mt-2">
                     <div class="card">
                         @foreach ($product->images as $image)
-                            <a href="#"><img src="{{ asset('images/' . $image->name . '') }}" alt="{{ $product->name }}"></a>
+                            <a href="{{ route('users.products.show', $product->id) }}"><img src="{{ asset('images/' . $image->name . '') }}" alt="{{ $product->name }}"></a>
                             @break
                         @endforeach
                         <h3><a href="#">{{ $product->name }}</a></h3>
