@@ -44,5 +44,7 @@ Route::prefix('user')->name('users.')->group(function () {
         Route::post('/addToCart', 'addToCart')->name('addToCart');
         Route::post('/update', 'updateCart')->name('update');
         Route::get('/delete/{id}', 'delete')->name('delete');
+        Route::post('/payment', 'payment')->name('payment');
+        Route::get('/complete/{id}', 'complete')->name('complete');
     });
 });

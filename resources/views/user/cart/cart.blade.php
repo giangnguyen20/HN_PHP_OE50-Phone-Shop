@@ -4,7 +4,12 @@
 <div class="mess">
     @if (Session::has('message'))
         <div class="alert alert-success">
-            <div class="text-red">{{ __(Session::get('message')) }}</div>
+            <div class="text-black">{{ __(Session::get('message')) }}</div>
+        </div>
+    @endif
+    @if (Session::has('error'))
+        <div class="alert alert-danger">
+            <div class="text-black">{{ __(Session::get('error')) }}</div>
         </div>
     @endif
     @if ($errors->any())
@@ -60,36 +65,37 @@
 
 <!--	Customer Info	-->
 <div id="customer">
-    <form action="" method="post">
+    <form action="{{ route('users.cart.payment') }}" method="post">
+        @csrf
         <div class="row">
-            <div id="customer-name" class="col-lg-4 col-md-4 col-sm-12">
-                <input placeholder="Họ và tên (bắt buộc)" type="text" name="name" class="form-control" required>
+            <div id="customer-name" class="col-lg-6 col-md-6 col-sm-12">
+                <input placeholder="Họ và tên (bắt buộc)" type="text" name="name" value="{{ Auth::user()->fullname }}" class="form-control" required>
             </div>
-            <div id="customer-phone" class="col-lg-4 col-md-4 col-sm-12">
+            <div id="customer-phone" class="col-lg-6 col-md-6 col-sm-12">
                 <input placeholder="Số điện thoại (bắt buộc)" type="text" name="phone" class="form-control" required>
             </div>
-            <div id="customer-mail" class="col-lg-4 col-md-4 col-sm-12">
-                <input placeholder="Email (bắt buộc)" type="text" name="mail" class="form-control" required>
+            <div id="customer-add" class="col-lg-12 col-md-12 col-sm-12">
+                <input placeholder="Địa chỉ nhà riêng hoặc cơ quan (bắt buộc)" type="text" name="address" class="form-control" required>
             </div>
             <div id="customer-add" class="col-lg-12 col-md-12 col-sm-12">
-                <input placeholder="Địa chỉ nhà riêng hoặc cơ quan (bắt buộc)" type="text" name="add" class="form-control" required>
+                <input placeholder="Ghi chú" type="text" name="note" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="by-now col-lg-6 col-md-6 col-sm-12">
+                <button class="btn btn-danger" type="submit">
+                    <b>Mua ngay</b>
+                    <span>Giao hàng tận nơi siêu tốc</span>
+                </button>
+            </div>
+            <div class="by-now col-lg-6 col-md-6 col-sm-12">
+                <button class="btn btn-success" disabled>
+                    <b>Trả góp Online (Đang bảo trì)</b>
+                    <span>Vui lòng call (+84) 0988 550 553</span>
+                </button>
             </div>
         </div>
     </form>
-    <div class="row">
-        <div class="by-now col-lg-6 col-md-6 col-sm-12">
-            <a href="#">
-                <b>Mua ngay</b>
-                <span>Giao hàng tận nơi siêu tốc</span>
-            </a>
-        </div>
-        <div class="by-now col-lg-6 col-md-6 col-sm-12">
-            <a href="#">
-                <b>Trả góp Online (Đang bảo trì)</b>
-                <span>Vui lòng call (+84) 0988 550 553</span>
-            </a>
-        </div>
-    </div>
 </div>
 <!--	End Customer Info	-->
 @endsection
