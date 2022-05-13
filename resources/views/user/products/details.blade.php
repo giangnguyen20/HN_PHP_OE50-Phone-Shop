@@ -1,6 +1,20 @@
 @extends('layouts.header')
 
 @section('content')
+<div class="mess">
+    @if (Session::has('message'))
+        <div class="alert alert-danger">
+            <div class="text-black">{{ __(Session::get('message')) }}</div>
+        </div>
+    @endif
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger">
+                <div class="text-red">{{ __($error) }}</div>
+            </div>
+        @endforeach
+    @endif
+</div>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
         <ul id="menu" class="collapse">
@@ -30,7 +44,7 @@
                     <li><span>{{ __('Accessories') }}: </span>{{ $product->accessories }}</li>
                     <li id="price">{{ __('Price') }}: {{ number_format($product->price) }} đ</li>
                     <li class="text-danger" id="status">
-                        @if ($product->status)
+                        @if ($product->quantity > 0)
                             {{ __('Stocking') }}
                         @else
                             {{ __('Out of stock') }}
@@ -43,7 +57,11 @@
                 </ul>
                 <input type="hidden" name="id" value="{{ $product->id }}">
                 <div id="add-cart">
+                @if ($product->quantity > 0)
                     <button type="submit" class="btn btn-danger">{{ __('Buy') }}</button>
+                @else
+                    <button type="submit" class="btn btn-danger" disabled>{{ __('Buy') }}</button>
+                @endif
                 </div>
             </form>
         </div>

@@ -51,5 +51,11 @@
     "qty.required": "quantity is required",
     "qty.num": "The number is invalid",
     "Update cart": "Update cart",
-    "Total price": "Total price"
+    "Total price": "Total price",
+    "Rejected": "Rejected",
+    "Cancel": "Cancel",
+    "Complete": "Complete",
+    "Delivering": "Delivering",
+    "Processing": "Processing",
+    "Pending": "Pending"
 }

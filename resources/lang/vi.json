@@ -62,5 +62,11 @@
     "qty.required": "Bạn chưa có số lượng sản phẩm",
     "qty.num": "Số lượng không đúng",
     "Update cart": "Cập nhật giỏ hàng",
-    "Total price": "Tổng giá"
+    "Total price": "Tổng giá",
+    "Rejected": "Trả lại",
+    "Cancel": "Hủy",
+    "Complete": "Đã hoàn thành",
+    "Delivering": "Đang giao",
+    "Processing": "Đang xử lý",
+    "Pending": "Đã ghi nhận"
 }

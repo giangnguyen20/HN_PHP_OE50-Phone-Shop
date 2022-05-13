@@ -116,6 +116,15 @@ return [
     'status' => [
         'active' => 1,
         'block' => 2,
+    ],
+
+    'orderStatus' => [
+        'pending' => 1,
+        'processing' => 2,
+        'delivering' => 3,
+        'complete' => 4,
+        'cancel' => 5,
+        'rejected' => 6,
     ]
 
 ];
