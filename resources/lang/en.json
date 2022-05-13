@@ -57,5 +57,10 @@
     "Complete": "Complete",
     "Delivering": "Delivering",
     "Processing": "Processing",
-    "Pending": "Pending"
+    "Pending": "Pending",
+    "Edit Status": "Edit Status",
+    "Submit": "Submit",
+    "Quantity": "Quantity",
+    "Total": "Total",
+    "Time create": "Time create"
 }

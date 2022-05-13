@@ -61,12 +61,19 @@
     "qty.max": "Số lượng sản phẩm không được quá 10",
     "qty.required": "Bạn chưa có số lượng sản phẩm",
     "qty.num": "Số lượng không đúng",
+    "Users": "Người dùng",
     "Update cart": "Cập nhật giỏ hàng",
     "Total price": "Tổng giá",
+    "Orders": "Đơn hàng",
     "Rejected": "Trả lại",
     "Cancel": "Hủy",
     "Complete": "Đã hoàn thành",
     "Delivering": "Đang giao",
     "Processing": "Đang xử lý",
-    "Pending": "Đã ghi nhận"
+    "Pending": "Đã ghi nhận",
+    "Edit Status": "Chỉnh sửa trạng thái",
+    "Submit": "Xác nhận",
+    "Quantity": "Số lượng",
+    "Total": "Tổng giá",
+    "Time create": "Thời gian đặt"
 }

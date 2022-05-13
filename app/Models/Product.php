@@ -17,6 +17,7 @@ class Product extends Model
         'accessories',
         'color',
         'warranty',
+        'quantity',
         'status',
         'category_id',
     ];
