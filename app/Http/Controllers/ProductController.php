@@ -57,6 +57,7 @@ class ProductController extends Controller
                 'accessories' => $request->accessories,
                 'warranty' => $request->warranty,
                 'color' => $request->color,
+                'quantity' => $request->quantity,
                 'category_id' => $request->category_id,
             ]);
 
@@ -138,7 +139,7 @@ class ProductController extends Controller
             Image::insert($data);
         }
 
-        return redirect()->back()->with('messages', __('create_success'));
+        return redirect()->back()->with('messages', __('update_success'));
     }
 
     /**

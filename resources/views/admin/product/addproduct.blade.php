@@ -44,6 +44,10 @@
             <input type="text" name="color" class="form-control" required>
         </div>
         <div class="col-md-10">
+            <span>{{ __('Quantity') }}:</span>
+            <input type="number" name="quantity" class="form-control" min="0" required>
+        </div>
+        <div class="col-md-10">
             <br>
             <span>{{ __('Category') }}:</span>
             <select name="category_id">
