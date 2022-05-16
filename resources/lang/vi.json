@@ -76,5 +76,8 @@
     "Quantity": "Số lượng",
     "Total": "Tổng giá",
     "Time create": "Thời gian đặt",
-    "Result :key": "Kết quả tìm kiếm :key"
+    "Result :key": "Kết quả tìm kiếm :key",
+    "Comments": "Bình luận",
+    "content.required": "bạn chưa nhập nội dung",
+    "content.min": "nội dung không ít hơn 3 ký tự"
 }

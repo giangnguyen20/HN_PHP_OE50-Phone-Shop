@@ -125,6 +125,8 @@ return [
         'complete' => 4,
         'cancel' => 5,
         'rejected' => 6,
-    ]
+    ],
+
+    'comment_page' => 3,
 
 ];

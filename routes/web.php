@@ -42,6 +42,7 @@ Route::prefix('user')->name('users.')->group(function () {
     Route::resource('products', UserProductController::class);
     Route::get('productbycategory/{id}', [UserProductController::class, 'showByCategory'])->name('showbycategory');
     Route::get('search', [UserProductController::class, 'search'])->name('search');
+    Route::post('comment', [UserProductController::class, 'comment'])->name('comment');
     Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(function () {
         Route::get('/', 'cart')->name('showCart');
         Route::post('/addToCart', 'addToCart')->name('addToCart');

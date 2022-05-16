@@ -28,7 +28,7 @@ class HomeController extends Controller
         $categories = Category::all();
         $products = Product::with('images')
             ->select('products.*')
-            ->orderBy('created_at', 'ASC')
+            ->orderBy('created_at', 'DESC')
             ->paginate(config('product.limit'));
         
         return view('home', compact('categories', 'products'));

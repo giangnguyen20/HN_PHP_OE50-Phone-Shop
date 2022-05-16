@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Products\CommentRequest;
 
 class UserProductController extends Controller
 {
@@ -55,8 +58,12 @@ class UserProductController extends Controller
     {
         $categories = Category::all();
         $product = Product::with('images')->where('products.id', "=", $id)->first();
+        $comments = Comment::with('user')
+            ->where('product_id', $id)
+            ->orderBy('created_at', 'DESC')
+            ->paginate(config('auth.comment_page'));
 
-        return view('user.products.details', compact('categories', 'product'));
+        return view('user.products.details', compact('categories', 'product', 'comments'));
     }
 
     /**
@@ -114,5 +121,16 @@ class UserProductController extends Controller
         $key_search = $request->key;
 
         return view('user.products.search', compact('categories', 'products', 'key_search'));
+    }
+    
+    public function comment(CommentRequest $request)
+    {
+        Comment::create([
+            'user_id' => Auth::user()->id,
+            'product_id' => $request->product_id,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->back();
     }
 }
