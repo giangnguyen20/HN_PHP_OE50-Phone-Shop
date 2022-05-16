@@ -104,4 +104,15 @@ class UserProductController extends Controller
 
         return view('user.products.productbycategory', compact('products', 'categories'));
     }
+
+    public function search(Request $request)
+    {
+        $categories = Category::all();
+        $products = Product::where('name', 'like', '%'.$request->key.'%')
+            ->paginate(config('product.limit'))
+            ->withQueryString();
+        $key_search = $request->key;
+
+        return view('user.products.search', compact('categories', 'products', 'key_search'));
+    }
 }
