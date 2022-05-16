@@ -30,7 +30,7 @@
                             <a href="{{ route('users.products.show', $product->id) }}"><img src="{{ asset('images/' . $image->name . '') }}" alt="{{ $product->name }}"></a>
                             @break
                         @endforeach
-                        <h3><a href="#">{{ $product->name }}</a></h3>
+                        <h3><a href="{{ route('users.products.show', $product->id) }}">{{ $product->name }}</a></h3>
                         <p>{{ __('Price') }}: <span>{{ $product->price }}đ</span></p>
                     </div>
                 </div>
