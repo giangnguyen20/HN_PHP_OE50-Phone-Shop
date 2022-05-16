@@ -24,8 +24,8 @@
                     <a href="{{ route('home') }}"><img src="{{ asset('bower_components/user/images/logo.png') }}" alt="" /></a>
                 </div>
                 <div id="search-box" class="col-lg-6 col-md-5 col-sm-12 mt-1">
-                    <form class="d-flex">
-                        <input class="form-control" type="search" placeholder="Tìm kiếm" aria-label="Search">
+                    <form class="d-flex" action="{{ route('users.search') }}" method="GET">
+                        <input class="form-control" type="text" name="key" placeholder="Tìm kiếm" aria-label="Search">
                         <button class="btn" type="submit">{{ __('Search') }}</button>
                     </form>
                 </div>
