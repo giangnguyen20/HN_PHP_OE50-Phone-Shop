@@ -18,8 +18,7 @@ class DatabaseSeeder extends Seeder
         DB::transaction(function () {
             Model::unguard();
             $this->call([
-                RoleSeeder::class,
-                UserSeeder::class,
+                UserSeeders::class,
             ]);
             Model::reguard();
         });

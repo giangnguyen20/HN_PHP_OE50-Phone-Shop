@@ -79,5 +79,9 @@
     "Result :key": "Kết quả tìm kiếm :key",
     "Comments": "Bình luận",
     "content.required": "bạn chưa nhập nội dung",
-    "content.min": "nội dung không ít hơn 3 ký tự"
+    "content.min": "nội dung không ít hơn 3 ký tự",
+    "need_login": "Bạn cần đăng nhập",
+    "login_fail": "Tài khoản hoặc mật khẩu không chính xác",
+    "Language": "Ngôn ngữ",
+    "Result ':key'": "Kết quả tìm kiếm cho ':key'"
 }

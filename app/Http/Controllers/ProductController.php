@@ -56,6 +56,7 @@ class ProductController extends Controller
                 'description' => $request->description,
                 'accessories' => $request->accessories,
                 'warranty' => $request->warranty,
+                'quantity' => $request->quantity,
                 'color' => $request->color,
                 'category_id' => $request->category_id,
             ]);

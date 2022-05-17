@@ -9,16 +9,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
@@ -28,7 +18,7 @@ class HomeController extends Controller
         $categories = Category::all();
         $products = Product::with('images')
             ->select('products.*')
-            ->orderBy('created_at', 'DESC')
+            ->orderBy('created_at', 'ASC')
             ->paginate(config('product.limit'));
         
         return view('home', compact('categories', 'products'));
