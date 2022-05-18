@@ -57,11 +57,11 @@ class CartController extends Controller
             Cart::update($item, $request->qty[$key]);
         }
 
-        if (!$this->checkout()) {
-            return redirect()->back()->with('message', 'update_success');
+        if ($url = $this->checkout()) {
+            return $url;
         }
 
-        return $this->checkout();
+        return redirect()->back()->with('message', 'update_success');
     }
 
     public function delete($id)
@@ -102,6 +102,15 @@ class CartController extends Controller
 
             foreach ($products as $key => $product) {
                 $qty = $product->quantity - $data[$key]['quantity'];
+                
+                if ($qty == 0) {
+                    $product->update([
+                        'quantity' => $qty,
+                        'status' => "0",
+                    ]);
+
+                    return redirect()->route('users.cart.complete', $order->id);
+                }
 
                 $product->quantity = $qty;
                 $product->save();
