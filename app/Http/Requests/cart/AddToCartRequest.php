@@ -24,7 +24,7 @@ class AddToCartRequest extends FormRequest
     public function rules()
     {
         return [
-            'quantity' => 'numeric|min:1|max:10',
+            'quantity' => 'numeric|min:1',
         ];
     }
 
@@ -33,7 +33,6 @@ class AddToCartRequest extends FormRequest
         return [
             'quantity.numeric' => trans('qty.num'),
             'quantity.min' => trans('qty.min'),
-            'quantity.max' => trans('qty.max'),
         ];
     }
 }

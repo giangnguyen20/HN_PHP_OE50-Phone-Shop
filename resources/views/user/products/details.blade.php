@@ -31,30 +31,36 @@
     <div id="product-head" class="row">
         <div id="product-img" class="col-lg-6 col-md-6 col-sm-12">
             @foreach ($product->images as $image)
-                <img src="{{ asset('images/'.$image->name.'') }}" width="100%">
+                <img src="{{ asset('images/' . $image->name) }}" width="80%">
                 @break
             @endforeach
         </div>
         <div id="product-details" class="col-lg-6 col-md-6 col-sm-12">
+            <h1>{{ $product->name }}</h1>
+            <br>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>{{ __('Accessories') }}:</td>
+                        <td>{{ $product->accessories }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('Warranty') }}:</td>
+                        <td>{{ $product->warranty }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('Color') }}:</td>
+                        <td>{{ $product->color }}</td>
+                    </tr>
+                    <tr>
+                        <td><h4>{{ __('Price') }}:</h4></td>
+                        <td><h3>{{ number_format($product->price) }}đ</h3></td>
+                    </tr>
+                </tbody>
+            </table>
             <form action="{{ route('users.cart.addToCart') }}" method="post">
                 @csrf
-                <h1>{{ $product->name }}</h1>
-                <ul>
-                    <li><span>{{ __('Warranty') }}: </span>{{ $product->warranty }} tháng</li>
-                    <li><span>{{ __('Accessories') }}: </span>{{ $product->accessories }}</li>
-                    <li id="price">{{ __('Price') }}: {{ number_format($product->price) }} đ</li>
-                    <li class="text-danger" id="status">
-                        @if ($product->quantity > 0)
-                            {{ __('Stocking') }}
-                        @else
-                            {{ __('Out of stock') }}
-                        @endif
-                    </li>
-                    <li>
-                        <span>{{ __('Quantity') }}</span>
-                        <input type="number" name="quantity" value="1" min="1" max="10">
-                    </li>
-                </ul>
+                <h2>{{ __('Quantity') }}: <input type="number" name="quantity" id="quantity" value="1" min="1"></h2>
                 <input type="hidden" name="id" value="{{ $product->id }}">
                 <div id="add-cart">
                 @if ($product->quantity > 0)
