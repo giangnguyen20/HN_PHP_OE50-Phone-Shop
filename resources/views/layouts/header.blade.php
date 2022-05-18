@@ -20,23 +20,38 @@
     <div id="header">
         <div class="container">
             <div class="row">
-                <div id="logo" class="col-lg-3 col-md-3 col-sm-12">
+                <div id="logo" class="col-lg-3 col-md-2 col-sm-12">
                     <a href="{{ route('home') }}"><img src="{{ asset('bower_components/user/images/logo.png') }}" alt="" /></a>
                 </div>
-                <div id="search-box" class="col-lg-6 col-md-5 col-sm-12 mt-1">
+                <div id="search-box" class="col-lg-4 col-md-5 col-sm-12 mt-1">
                     <form class="d-flex" action="{{ route('users.search') }}" method="GET">
                         <input class="form-control" type="text" name="key" placeholder="Tìm kiếm" aria-label="Search">
                         <button class="btn" type="submit">{{ __('Search') }}</button>
                     </form>
                 </div>
+                <div class="col-lg-2 col-md-1 col-sm-12 mt-1">
+                    <div id="cart-notify">
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Language') }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a href="{{ route('lang', ['lang' => 'vi']) }}" id="lang">{{ __('VI') }}</a>
+                                <br>
+                                <a href="{{ route('lang', ['lang' => 'en']) }}" id="lang">{{ __('EN') }}</a>
+                            </div>
+                        </li>
+                    </div>
+                </div>
                 <div id="cart-notify" class="col-lg-3 col-md-3 col-sm-12 mt-1">
                     @guest
                         @if (Route::has('login'))
-                            <a class="btn btn-success" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="btn" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @endif
                         |
                         @if (Route::has('register'))
-                            <a class="btn btn-success" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="btn" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
                     <li class="nav-item dropdown">
