@@ -9,9 +9,6 @@
     <thead>
         <tr class="table-primary">
             <th scope="col">{{ __('Name') }}</th>
-            <th scope="col">{{ __('Image') }}</th>
-            <th scope="col">{{ __('Slug') }}</th>
-            <th scope="col">{{ __('Description') }}</th>
             <th scope="col">{{ __('Price') }}</th>
             <th scope="col">{{ __('Accessories') }}</th>
             <th scope="col">{{ __('Warranty') }}</th>
@@ -25,19 +22,12 @@
         @foreach ($products as $key => $product)
         <tr class="table-primary">
             <td class="table-active">{{ $product->name }}</td>
-            <td class="table-active">
-                @foreach ($product->images as $image)
-                    <img src="{{ asset('images/' . $image->name . '') }}" alt="Điện thoại đẹp" width="100px" class="thumbnail">
-                @endforeach
-            </td>
-            <td class="table-active">{{ $product->slug }}</td>
-            <td class="table-active">{{ $product->description }}</td>
             <td class="table-active">{{ $product->price }}</td>
             <td class="table-active">{{ $product->accessories }}</td>
             <td class="table-active">{{ $product->warranty }}</td>
             <td class="table-active">{{ $product->color }}</td>
             <td class="table-active">
-                @if ($product->status)
+                @if ($product->quantity)
                     {{ __('Stocking') }}
                 @else
                     {{ __('Out of stock') }}

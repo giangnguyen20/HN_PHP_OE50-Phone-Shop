@@ -51,11 +51,8 @@
         </div>
         <div class="col-md-10">
             <br>
-            <span>{{ __('Status') }}:</span>
-            <select name="status">
-                <option @if ($product->status == config('product.status.stocking')) selected @endif value="{{ config('product.status.stocking') }}">{{ __('Stocking') }}</option>
-                <option @if ($product->status == config('product.status.out_of_stock')) selected @endif value="{{ config('product.status.out_of_stock') }}">{{ __('Out of stock') }}</option>
-            </select>
+            <span>{{ __('Quantity') }}:</span>
+            <input type="number" name="quantity" class="form-control" value="{{ $product->quantity }}" min="1" required>
         </div>
         <div class="col-md-10">
             <br>
