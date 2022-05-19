@@ -52,7 +52,7 @@ class CategoriesController extends Controller
     {
         Category::create($request->all());
 
-        return redirect()->route('admin.categories.index')->with('message', __('create_successfull'));
+        return redirect()->route('admin.categories.index')->with('message', __('create_success'));
     }
 
     /**
@@ -92,7 +92,7 @@ class CategoriesController extends Controller
         $category->name = $request->name;
         $category->update();
 
-        return redirect()->route('admin.categories.index')->with('message', __('update_successfull'));
+        return redirect()->route('admin.categories.index')->with('message', __('update_success'));
     }
 
     /**

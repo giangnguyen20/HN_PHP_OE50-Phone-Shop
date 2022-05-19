@@ -30,6 +30,7 @@ class UpdateProductRequest extends FormRequest
             'warranty' => 'required|numeric|min:1|max:24',
             'color' => 'required|string|min:0',
             'category_id' => 'required|exists:categories,id',
+            'quantity' => 'required|min:1',
             'images.*' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ];
     }
@@ -44,6 +45,7 @@ class UpdateProductRequest extends FormRequest
             'price.max' => trans('price.max'),
             'warranty.min' => trans('warranty.min'),
             'warranty.max' => trans('warranty.max'),
+            'quantity.min' => trans('qty.min'),
         ];
     }
 }

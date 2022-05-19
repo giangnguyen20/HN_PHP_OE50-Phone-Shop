@@ -64,5 +64,6 @@
     "Total": "Total",
     "Time create": "Time create",
     "need_login": "You need to login",
-    "login_fail": "Incorrect account or password"
+    "login_fail": "Incorrect account or password",
+    "phone.digits": "The phone number invaild"
 }

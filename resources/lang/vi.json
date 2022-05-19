@@ -83,5 +83,6 @@
     "need_login": "Bạn cần đăng nhập",
     "login_fail": "Tài khoản hoặc mật khẩu không chính xác",
     "Language": "Ngôn ngữ",
-    "Result ':key'": "Kết quả tìm kiếm cho ':key'"
+    "Result ':key'": "Kết quả tìm kiếm cho ':key'",
+    "phone.digits": "Số điện thoại không đúng định dạng"
 }
