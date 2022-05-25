@@ -2,15 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Products\UpdateProductRequest;
-use App\Models\Product;
-use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\Image;
+use App\Http\Requests\Products\UpdateProductRequest;
+use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Repositories\Image\ImageRepositoryInterface;
+use App\Repositories\Product\ProductRepositoryInterface;
 
 class ProductController extends Controller
 {
+    protected $productRepo;
+    protected $categoryRepo;
+    protected $imageRepo;
+    
+    public function __construct(
+        ProductRepositoryInterface $productRepo,
+        CategoryRepositoryInterface $categoryRepo,
+        ImageRepositoryInterface $imageRepo
+    ) {
+        $this->productRepo = $productRepo;
+        $this->categoryRepo = $categoryRepo;
+        $this->imageRepo = $imageRepo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +30,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('images')
-            ->select('products.*')
-            ->orderBy('products.created_at', 'DESC')
-            ->paginate(config('product.PAGINATION_NUMBER'));
+        $products = $this->productRepo->getProductWithImages();
 
         return view('admin.product.index', compact('products'));
     }
@@ -33,7 +42,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = $this->categoryRepo->getAll();
 
         return view('admin.product.addproduct', compact('categories'));
     }
@@ -49,7 +58,7 @@ class ProductController extends Controller
         $data = [];
         $files = $request->file('images');
         if ($request->hasFile("images")) {
-            Product::create([
+            $this->productRepo->create([
                 'name' => $request->name,
                 'slug' => slugHelper($request->name),
                 'price' => $request->price,
@@ -61,10 +70,10 @@ class ProductController extends Controller
                 'category_id' => $request->category_id,
             ]);
 
-            $product = Product::select('id', 'name')->where('name', '=', $request->name)->first();
+            $product = $this->productRepo->getProductByName($request->name);
 
             foreach ($files as $key => $file) {
-                $imageName = slugHelper($product->name). '-' .time(). '.' .$file->extension();
+                $imageName = slugHelper($product->name) . '-' . time() . '.' . $file->extension();
                 $file->move(public_path('images'), $imageName);
                 $data[$key] = [
                     'product_id' => $product->id,
@@ -72,7 +81,7 @@ class ProductController extends Controller
                 ];
             }
 
-            Image::insert($data);
+            $this->imageRepo->insertImage($data);
         }
 
         return redirect()->back()->with('messages', __('create_success'));
@@ -97,8 +106,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::findOrFail($id);
-        $categories = Category::all();
+        $product = $this->productRepo->getProductById($id);
+        $categories = $this->categoryRepo->getAll();
 
         return view('admin.product.editproduct', compact('product', 'categories'));
     }
@@ -114,7 +123,7 @@ class ProductController extends Controller
     {
         $data = [];
         $files = $request->file('images');
-        $product = Product::findOrFail($id);
+        $product = $this->productRepo->getProductById($id);
         $product->update([
             'name' => $request->name,
             'slug' => slugHelper($request->name),
@@ -128,7 +137,7 @@ class ProductController extends Controller
         ]);
         if ($request->hasFile("images")) {
             foreach ($files as $key => $file) {
-                $imageName = slugHelper($product->name). '-' .time(). '.' .$file->extension();
+                $imageName = slugHelper($product->name) . '-' . time() . '.' . $file->extension();
                 $file->move(public_path('images'), $imageName);
                 $data[$key] = [
                     'product_id' => $product->id,
@@ -136,7 +145,7 @@ class ProductController extends Controller
                 ];
             }
 
-            Image::insert($data);
+            $this->imageRepo->insertImage($data);
         }
 
         return redirect()->back()->with('messages', __('update_success'));
@@ -150,9 +159,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::findOrFail($id);
+        $product = $this->productRepo->getProductById($id);
         $product->delete();
 
-        return redirect()->route('admin.products.index')->with('message', __('delete_success'));
+        return redirect()->route('admin.products.index')->with('messages', __('delete_success'));
     }
 }
