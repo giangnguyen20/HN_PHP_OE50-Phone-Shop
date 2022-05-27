@@ -65,5 +65,12 @@
     "Time create": "Time create",
     "need_login": "You need to login",
     "login_fail": "Incorrect account or password",
-    "phone.digits": "The phone number invaild"
+    "phone.digits": "The phone number invaild",
+    "email.required": "Email is required",
+    "email.email": "Email is invalid",
+    "email.max": "Email length must be less than 320 characters",
+    "password.required": "Password is required",
+    "password.string": "Password is invalid",
+    "password.min": "Password length must be more than 8 characters",
+    "password.max": "Password length must be less than 255 characters"
 }
