@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Category\CreateCategoryRequest;
 use App\Http\Requests\Category\UpdateCategoryRequest;
+use App\Repositories\Category\CategoryRepositoryInterface;
 
-class CategoriesController extends Controller
+class CategoryController extends Controller
 {
     const PAGINATION_NUMBER = 5;
-    protected $catrgories;
+    protected $categoryRepo;
 
-    public function __construct(Category $catrgories)
+    public function __construct(CategoryRepositoryInterface $categoryRepo)
     {
-        $this->catrgories = $catrgories;
+        $this->categoryRepo = $categoryRepo;
     }
 
     /**
@@ -25,10 +23,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $category =  DB::table('categories')
-            ->select('*')
-            ->paginate(config('product.PAGINATION_NUMBER'));
-
+        $category =  $this->categoryRepo->getAllCategory();
+        
         return view('admin.quanlydanhmuc.category', compact('category'));
     }
 
@@ -39,7 +35,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.quanlydanhmuc.addcategory');
+        //
     }
 
     /**
@@ -50,7 +46,7 @@ class CategoriesController extends Controller
      */
     public function store(CreateCategoryRequest $request)
     {
-        Category::create($request->all());
+        $this->categoryRepo->create($request->all());
 
         return redirect()->route('admin.categories.index')->with('message', __('create_success'));
     }
@@ -74,9 +70,7 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
-
-        return view('admin.quanlydanhmuc.edit')->with(compact('category'));
+        //
     }
 
     /**
@@ -88,11 +82,16 @@ class CategoriesController extends Controller
      */
     public function update(UpdateCategoryRequest $request, $id)
     {
-        $category = Category::findOrFail($id);
-        $category->name = $request->name;
-        $category->update();
+        if ($this->categoryRepo->getCategoryById($id)) {
+            $category = $this->categoryRepo->getCategoryById($id);
+            $options['name'] = $request->name;
+            $options['slug'] = slugHelper($options['name']);
+            $category->update($options);
+            
+            return redirect()->route('admin.categories.index')->with('message', __('update_success'));
+        }
 
-        return redirect()->route('admin.categories.index')->with('message', __('update_success'));
+        return redirect()->route('admin.categories.index')->with('error', __('Update Fail'));
     }
 
     /**
@@ -103,13 +102,12 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        if (Category::find($id)) {
-            $user = Category::find($id);
-            $user->delete();
-        } else {
-            return redirect()->route('admin.categories.index')->with('message', __('category.not_found'));
-        }
+        if ($this->categoryRepo->getCategoryById($id)) {
+            $this->categoryRepo->delete($id);
 
-        return redirect()->route('admin.categories.index')->with('message', __('delete_success'));
+            return redirect()->route('admin.categories.index')->with('message', __('delete_success'));
+        }
+        
+        return redirect()->route('admin.categories.index')->with('error', __('category.not_found'));
     }
 }

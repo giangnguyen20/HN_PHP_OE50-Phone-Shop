@@ -7,10 +7,12 @@
         <div class="text-white">{{ Session::get('message') }}</div>
     </div>
     @endif
-    @if (Session::has('error'))
-        <div class="alert alert-danger">
-            <div class="text-white">{{ Session::get('error') }}</div>
-        </div>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger">
+                <div class="text-white">{{ __($error) }}</div>
+            </div>
+        @endforeach
     @endif
 </div>
 
