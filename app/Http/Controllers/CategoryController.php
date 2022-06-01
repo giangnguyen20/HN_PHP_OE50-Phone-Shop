@@ -6,7 +6,7 @@ use App\Http\Requests\Category\CreateCategoryRequest;
 use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Repositories\Category\CategoryRepositoryInterface;
 
-class CategoriesController extends Controller
+class CategoryController extends Controller
 {
     const PAGINATION_NUMBER = 5;
     protected $categoryRepo;
