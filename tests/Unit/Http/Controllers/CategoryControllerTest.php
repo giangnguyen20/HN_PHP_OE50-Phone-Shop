@@ -4,17 +4,17 @@ namespace Tests\Unit\Http\Controllers;
 
 use Mockery;
 use Mockery as m;
+use Tests\TestCase;
 use App\Models\Category;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Tests\TestCase;
-use App\Http\Controllers\CategoriesController;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\CategoryController;
 use App\Http\Requests\Category\CreateCategoryRequest;
 use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Repositories\Category\CategoryRepositoryInterface;
-use Illuminate\Http\RedirectResponse;
 
-class CategoryTest extends TestCase
+class CategoryControllerTest extends TestCase
 {
     protected $categories;
     protected $category;
@@ -28,7 +28,7 @@ class CategoryTest extends TestCase
         $this->categories = Category::factory()->count(5)->make();
         $this->request = m::mock(Request::class);
         $this->categoryRepo = m::mock(CategoryRepositoryInterface::class)->makePartial();
-        $this->controller = new CategoriesController($this->categoryRepo);
+        $this->controller = new CategoryController($this->categoryRepo);
         $this->categoryMock = m::mock(Category::class, [
             'id' => 1,
             'name' => 'itel one',
@@ -75,7 +75,7 @@ class CategoryTest extends TestCase
         $this->assertArrayHasKey('message', session()->all());
     }
 
-    public function testUpdate()
+    public function testUpdateSuccess()
     {
         $id = 1;
         $data = [
@@ -100,7 +100,9 @@ class CategoryTest extends TestCase
         $this->categoryMock->shouldReceive('update')->with($options)
             ->andReturn(true);
         
-        $this->controller->update($request, $id);
+        $response = $this->controller->update($request, $id);
+
+        $this->assertEquals(302, $response->getStatusCode());
         $this->assertArrayHasKey('message', session()->all());
     }
 
@@ -116,7 +118,8 @@ class CategoryTest extends TestCase
             ->andReturn(false);
         
         $response = $this->controller->update($request, $id);
-        $this->assertInstanceOf(RedirectResponse::class, $response);
+        $this->assertEquals(302, $response->getStatusCode());
+        $this->assertArrayHasKey('error', session()->all());
     }
 
     public function testDestroy()
