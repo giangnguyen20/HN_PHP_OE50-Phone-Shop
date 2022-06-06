@@ -4,17 +4,17 @@ namespace Tests\Unit\Http\Controllers;
 
 use Mockery;
 use Mockery as m;
+use Tests\TestCase;
 use App\Models\Category;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Tests\TestCase;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\CategoryController;
 use App\Http\Requests\Category\CreateCategoryRequest;
 use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Repositories\Category\CategoryRepositoryInterface;
-use Illuminate\Http\RedirectResponse;
 
-class CategoryTest extends TestCase
+class CategoryControllerTest extends TestCase
 {
     protected $categories;
     protected $category;

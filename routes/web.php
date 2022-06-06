@@ -8,7 +8,6 @@ use App\Http\Controllers\LangController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\OrderAdminController;
 use App\Http\Controllers\UserProductController;
 
