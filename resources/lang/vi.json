@@ -91,5 +91,7 @@
     "password.required": "Mật khẩu không được để trống",
     "password.string": "Mật khẩu khoogn đúng định dạng",
     "password.min": "Mật khẩu tối thiểu 8 ký tự",
-    "password.max": "Mật khẩu tối đa 255 ký tự"
+    "password.max": "Mật khẩu tối đa 255 ký tự",
+    "Category": "Danh mục",
+    "Revenue statistics chart in :year": "Biểu đồ doanh thu trong năm :year"
 }
