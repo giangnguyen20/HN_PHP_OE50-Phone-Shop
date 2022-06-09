@@ -48,7 +48,7 @@
                 <div class="col-lg-1 col-md-1 col-sm-12 mt-1">
                     @if (Auth::check())
                     <div class="nav-item dropdown">
-                        <a id="navbarDropdown notification" class="nav-link notification" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown notification" class="nav-link notification noti-num" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <i class="fa fa-bell-o"></i>
                             @if (auth()->user()->unreadNotifications->count() > 0)
                                 <span class="noti" id="noti-quantity">{{ auth()->user()->unreadNotifications->count() }}</span>
@@ -161,6 +161,7 @@
     <!-- End Footer -->
     @auth
         <script>
+            window.translations = {!! $translation !!};
             window.user = {{ Auth::id() }};
         </script>
     @endauth

@@ -1,4 +1,5 @@
 import Pusher from "pusher-js";
+import trans from "./trans";
 
 var pusher = new Pusher(process.env.MIX_PUSHER_APP_KEY, {
     encrypted: true,
@@ -10,7 +11,7 @@ channel.bind("notificationstatus-event", async function (data) {
     let quantity = parseInt($(".notification").find(".noti").html());
     
     if (Number.isNaN(quantity)) {
-        $("#noti-quantity").append(
+        $(".noti-num").append(
             '<span class="noti" id="noti-quantity">1</span>'
         );
     }  else {
@@ -21,22 +22,22 @@ channel.bind("notificationstatus-event", async function (data) {
     var status = '';
     switch (data.status) {
         case '1':
-            status = 'Pendding';
+            status = trans('me.Pendding');
             break;
         case '2':
-            status = 'Processing';
+            status = trans('me.Processing');
             break;
         case '3':
-            status = 'Delivering';
+            status = trans('me.Delivering');
             break;
         case '4':
-            status = 'Complete';
+            status = trans('me.Complete');
             break;
         case '5':
-            status = 'noti_cancel';
+            status = trans('me.noti_cancel');
             break;
         case '6':
-            status = 'Rejected';
+            status = trans('me.Rejected');
             break;
     }
 
@@ -45,7 +46,7 @@ channel.bind("notificationstatus-event", async function (data) {
             <div class="read">
                 Your order <strong>`+ status +`</strong>
                 <br>
-                <small class="box read">recent</small>
+                <small class="box read">${ trans('me.recent') }</small>
             </div>
         </a>
     `;
