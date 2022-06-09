@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/js/scriptchart.js": "/js/scriptchart.js",
     "/js/chart.js": "/js/chart.js",
+    "/js/notification.js": "/js/notification.js",
     "/css/app.css": "/css/app.css"
 }

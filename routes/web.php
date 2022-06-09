@@ -6,8 +6,9 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\OrderAdminController;
 use App\Http\Controllers\UserProductController;
 
@@ -54,4 +55,7 @@ Route::prefix('user')->name('users.')->group(function () {
         Route::post('/payment', 'payment')->name('payment');
         Route::get('/complete/{id}', 'complete')->name('complete');
     });
+
+    Route::get('/read/{id}', [OrderAdminController::class, 'readNotification'])->name('read.noti');
+    Route::get('/readall', [OrderAdminController::class, 'readAllNotification'])->name('readall.noti');
 });
