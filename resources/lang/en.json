@@ -72,5 +72,7 @@
     "password.required": "Password is required",
     "password.string": "Password is invalid",
     "password.min": "Password length must be more than 8 characters",
-    "password.max": "Password length must be less than 255 characters"
+    "password.max": "Password length must be less than 255 characters",
+    "Category": "Category",
+    "Revenue statistics chart in :year": "Revenue statistics chart in :year"
 }

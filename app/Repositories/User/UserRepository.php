@@ -18,4 +18,22 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
         return $users;
     }
+    
+    public function getUser($id)
+    {
+        return $this->model->findOrFail($id);
+    }
+
+    public function getAllUser()
+    {
+        return $this->model->orderBy('id', 'DESC')->paginate(config('auth.orderPagination'));
+    }
+
+    public function updateStatusUser($id, $data)
+    {
+        $user = $this->model->findOrFail($id);
+
+        $user->status = $data;
+        $user->update();
+    }
 }

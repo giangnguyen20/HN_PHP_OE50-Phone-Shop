@@ -35,6 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="{{ asset('bower_components/js/raphael-min.js') }}"></script>
     <script src="{{ asset('bower_components/js/morris.js') }}"></script>
     <script src="{{ asset('bower_components/js/delete.js') }}"></script>
+    <script src="{{ asset('js/Chart.js') }}"></script>
 </head>
 
 <body>
@@ -133,6 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper">
+                @yield('chart')
                 <div class="row">
                     <div class="panel-body">
                         <div class="col-md-12 w3ls-graph">
