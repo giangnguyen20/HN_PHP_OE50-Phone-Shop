@@ -14,6 +14,7 @@ class AdminController extends Controller
     protected $productRepo;
     protected $categoryRepo;
     protected $orderRepo;
+    protected $userRepo;
 
     public function __construct(
         ProductRepositoryInterface $productRepo,
