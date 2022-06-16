@@ -68,4 +68,9 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
 
         return json_encode(array_merge($initChart));
     }
+
+    public function findOrderById($id)
+    {
+        return $this->model->findOrFail($id);
+    }
 }

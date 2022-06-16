@@ -13,7 +13,7 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><span>{{ __('Name') }}: </span>{{ $user->fullname }}</li>
-                <li class="list-group-item"><span>{{ __('Phone') }}: </span>{{ $user->phone }}</li>
+                <li class="list-group-item"><span>{{ __('Phone') }}: </span>{{ $order->phone }}</li>
                 <li class="list-group-item"><span>{{ __('Email') }}: </span>{{ $user->email }}</li>
             </ul>
         </div>

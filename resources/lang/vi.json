@@ -43,7 +43,7 @@
     "products.new": "Sản phẩm mới",
     "intro_shop": "Vietpro Academy thành lập năm 2009. Chúng tôi đào tạo chuyên sâu trong 2 lĩnh vực là Lập trình Website & Mobile nhằm cung cấp cho thị trường CNTT Việt Nam những lập trình viên thực sự chất lượng, có khả năng làm việc độc lập, cũng như Team Work ở mọi môi trường đòi hỏi sự chuyên nghiệp cao.",
     "Price": "Giá Bán",
-    "Search": "Tìm kiếm",
+    "Search": "Tìm",
     "Ha Noi": "Hà Nội",
     "Service": "Dịch vụ",
     "Hotline": "Hotline",
@@ -93,5 +93,6 @@
     "password.min": "Mật khẩu tối thiểu 8 ký tự",
     "password.max": "Mật khẩu tối đa 255 ký tự",
     "Category": "Danh mục",
-    "Revenue statistics chart in :year": "Biểu đồ doanh thu trong năm :year"
+    "Revenue statistics chart in :year": "Biểu đồ doanh thu trong năm :year",
+    "Your order": "Đơn hàng của bạn"
 }
