@@ -88,4 +88,10 @@ class UserTest extends ModelTestCase
             $key
         );
     }
+
+    public function testGetUnreadNotificationAttribute()
+    {
+        $this->user = new User();
+        $this->assertIsNumeric($this->user->unread_notification);
+    }
 }

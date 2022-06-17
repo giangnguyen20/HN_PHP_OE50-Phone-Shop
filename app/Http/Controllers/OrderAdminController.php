@@ -11,14 +11,19 @@ use Illuminate\Support\Facades\Auth;
 use App\Events\OrderNotificationsEvent;
 use App\Notifications\OrderNotifications;
 use App\Repositories\Order\OrderRepositoryInterface;
+use App\Repositories\User\UserRepositoryInterface;
 
 class OrderAdminController extends Controller
 {
     protected $orderRepo;
+    protected $userRepo;
 
-    public function __construct(OrderRepositoryInterface $orderRepo)
-    {
+    public function __construct(
+        OrderRepositoryInterface $orderRepo,
+        UserRepositoryInterface $userRepo
+    ) {
         $this->orderRepo = $orderRepo;
+        $this->userRepo = $userRepo;
     }
 
     /**
@@ -28,10 +33,7 @@ class OrderAdminController extends Controller
      */
     public function index()
     {
-        $orders = Order::with('user')
-            ->select('orders.*')
-            ->orderBy('created_at', 'desc')
-            ->paginate(config('product.PAGINATION_NUMBER'));
+        $orders = $this->orderRepo->getAllWithUsers();
 
         return view('admin.order.index', compact('orders'));
     }
@@ -76,8 +78,8 @@ class OrderAdminController extends Controller
      */
     public function edit($id)
     {
-        $order = Order::findOrFail($id);
-        $user = User::findOrFail($order->user_id);
+        $order = $this->orderRepo->getOrderById($id);
+        $user = $this->userRepo->getUser($order->user_id);
         $order_product = $order->products;
 
         return view('admin.order.edit', compact('order_product', 'user', 'order'));
@@ -92,7 +94,7 @@ class OrderAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $order = Order::findOrFail($id);
+        $order = $this->orderRepo->getOrderById($id);
         $order->status = $request->status;
         $order->save();
 
@@ -145,8 +147,8 @@ class OrderAdminController extends Controller
             ], 404);
         }
 
-        $order = Order::findOrFail($order_id);
-        $user = User::findOrFail($order->user_id);
+        $order = $this->orderRepo->getOrderById($order_id);
+        $user = $this->userRepo->getUser($order->user_id);
         $order_product = $order->products;
         
         return view('user.cart.order_detail', compact('order', 'user', 'order_product'));

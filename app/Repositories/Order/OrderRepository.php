@@ -29,7 +29,7 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
     {
         return $this->model->with(['user'])
             ->orderBy('created_at', 'desc')
-            ->paginate(config('auth.orderPagination'));
+            ->paginate(config('product.PAGINATION_NUMBER'));
     }
 
     public function getOrderById($id)
