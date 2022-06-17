@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\File;
 
 class LangMiddlware
 {
@@ -21,6 +23,18 @@ class LangMiddlware
             App::setLocale($request->session()->get('lang'));
         }
 
+        View::share(
+            'translation',
+            collect(File::allFiles(resource_path('lang/' . App::getLocale())))
+                ->flatMap(
+                    function ($file) {
+                        return [
+                            ($translation = $file->getBasename('.php')) => trans($translation),
+                        ];
+                    }
+                )->toJson()
+        );
+        
         return $next($request);
     }
 }

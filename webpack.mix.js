@@ -15,5 +15,6 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/scriptchart.js', 'public/js')
     .js('node_modules/chart.js/dist/chart.js', 'public/js')
     .js('resources/js/notification.js', 'public/js')
+    .js('resources/js/trans.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps();
