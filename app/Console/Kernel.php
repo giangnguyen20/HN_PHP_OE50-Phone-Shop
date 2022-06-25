@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('weekly-sendMail:cron')
-            ->weeklyOn('7', '22:00');
+            ->weeklyOn(7, '22:00');
     }
 
     /**

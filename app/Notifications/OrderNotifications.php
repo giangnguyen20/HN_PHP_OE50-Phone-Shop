@@ -2,10 +2,11 @@
 
 namespace App\Notifications;
 
+use Pusher\Pusher;
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
 class OrderNotifications extends Notification
 {

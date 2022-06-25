@@ -3,6 +3,8 @@ namespace App\Repositories\User;
 
 use App\Models\User;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\OrderNotifications;
 use App\Repositories\User\UserRepositoryInterface;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface
@@ -35,5 +37,34 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
         $user->status = $data;
         $user->update();
+    }
+
+    public function markAsReadtNotificationById($id)
+    {
+        return Auth::user()->notifications->find($id)->markAsRead();
+    }
+
+    public function getDataNotificationById($id)
+    {
+        return Auth::user()->notifications->find($id)->data['id'];
+    }
+
+    public function markAsReadtAllNotification()
+    {
+        return Auth::user()->notifications->markAsRead();
+    }
+
+    public function setNotification($id, $data)
+    {
+        $user = $this->model->findOrFail($id);
+
+        return $user->notify(new OrderNotifications($data));
+    }
+
+    public function getIdNotificationWithUser($id)
+    {
+        $user = $this->model->findOrFail($id);
+
+        return $user->notifications->first()->id;
     }
 }
