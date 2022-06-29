@@ -8,6 +8,7 @@ use App\Models\Order;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Mail;
 use App\Console\Commands\SendMailCommands;
+use App\Mail\SendMail;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Repositories\Order\OrderRepositoryInterface;
 
@@ -44,11 +45,12 @@ class SendMailCommandTest extends TestCase
     {
         Mail::fake();
         $users = User::factory()->count(10)->make();
-
+        $quantity = 10;
+        
         $this->userRepo->shouldReceive('getAdmins')->andReturn($users);
-        $this->orderRepo->shouldReceiVe('getTheOrderQuantity')->andReturn();
+        $this->orderRepo->shouldReceive('getTheOrderQuantity')->andReturn($quantity);
 
-        $response = $this->command->handle($this->userRepo, $this->userRepo);
-        $this->assertTrue($response);
+        $this->command->handle();
+        Mail::assertQueued(SendMail::class, 10);
     }
 }
