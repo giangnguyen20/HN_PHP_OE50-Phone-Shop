@@ -73,4 +73,11 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
     {
         return $this->model->findOrFail($id);
     }
+
+    public function getOrderProductByOrderId($id)
+    {
+        $order = $this->model->findOrFail($id);
+        
+        return $order->products;
+    }
 }

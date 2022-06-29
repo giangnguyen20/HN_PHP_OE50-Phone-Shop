@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
 use Pusher\Pusher;
-use App\Models\User;
-use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Events\NotificationEvent;
 use Illuminate\Support\Facades\Auth;
-use App\Events\OrderNotificationsEvent;
 use App\Notifications\OrderNotifications;
-use App\Repositories\Order\OrderRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface;
+use App\Repositories\Order\OrderRepositoryInterface;
 
 class OrderAdminController extends Controller
 {
@@ -80,7 +77,7 @@ class OrderAdminController extends Controller
     {
         $order = $this->orderRepo->getOrderById($id);
         $user = $this->userRepo->getUser($order->user_id);
-        $order_product = $order->products;
+        $order_product = $this->orderRepo->getOrderProductByOrderId($order->id);
 
         return view('admin.order.edit', compact('order_product', 'user', 'order'));
     }
@@ -94,35 +91,25 @@ class OrderAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $attribute = [
+            'status' => $request->status,
+        ];
+        $this->orderRepo->update($id, $attribute);
         $order = $this->orderRepo->getOrderById($id);
-        $order->status = $request->status;
-        $order->save();
-
+        
         $data = [
             'id' => $order->id,
             'status' => $order->status,
         ];
-
-        $user = $order->user;
-        $user->notify(new OrderNotifications($data));
-        $notification_id = $user->notifications->first()->id;
+        
+        $user =  $this->userRepo->getUser($order->user_id);
+        $this->userRepo->setNotification($order->user_id, $data);
+        $notification_id = $this->userRepo->getIdNotificationWithUser($order->user_id);
         $data['notification_id'] = $notification_id;
 
-        $options = [
-            'cluster' => 'ap1',
-            'encrypted' => true,
-        ];
+        event(new NotificationEvent($user->id, $data));
 
-        $pusher = new Pusher(
-            env('PUSHER_APP_KEY'),
-            env('PUSHER_APP_SECRET'),
-            env('PUSHER_APP_ID'),
-            $options
-        );
-
-        $pusher->trigger('channel-notificationstatus-'.$user->id, 'notificationstatus-event', $data);
-
-        return redirect()->route('admin.orders.edit', $id)->with('messages', __('update_success'));
+        return redirect()->back()->with('messages', __('update_success'));
     }
 
     /**
@@ -139,8 +126,8 @@ class OrderAdminController extends Controller
     public function readNotification($id)
     {
         try {
-            Auth::user()->Notifications->find($id)->markAsRead();
-            $order_id = Auth::user()->Notifications->find($id)->data['id'];
+            $this->userRepo->markAsReadtNotificationById($id);
+            $order_id = $this->userRepo->getDataNotificationById($id);
         } catch (\Exception $e) {
             return response()->json([
                 'mess' => $e,
@@ -149,7 +136,7 @@ class OrderAdminController extends Controller
 
         $order = $this->orderRepo->getOrderById($order_id);
         $user = $this->userRepo->getUser($order->user_id);
-        $order_product = $order->products;
+        $order_product = $this->orderRepo->getOrderProductByOrderId($order->id);
         
         return view('user.cart.order_detail', compact('order', 'user', 'order_product'));
     }
@@ -157,12 +144,13 @@ class OrderAdminController extends Controller
     public function readAllNotification()
     {
         try {
-            Auth::user()->Notifications->markAsRead();
+            $this->userRepo->markAsReadtAllNotification();
         } catch (\Throwable $e) {
             return response()->json([
                 'mess' => 'fail',
-            ], 500);
+            ], 302);
         }
+
         return redirect()->back();
     }
 }

@@ -9,7 +9,7 @@ var pusher = new Pusher(process.env.MIX_PUSHER_APP_KEY, {
 var channel = pusher.subscribe("channel-notificationstatus-" + window.user);
 channel.bind("notificationstatus-event", async function (data) {
     let quantity = parseInt($(".notification").find(".noti").html());
-    
+
     if (Number.isNaN(quantity)) {
         $(".noti-num").append(
             '<span class="noti" id="noti-quantity">1</span>'
@@ -20,7 +20,7 @@ channel.bind("notificationstatus-event", async function (data) {
     }
 
     var status = '';
-    switch (data.status) {
+    switch (data.data.status) {
         case '1':
             status = trans('me.Pendding');
             break;
@@ -41,8 +41,10 @@ channel.bind("notificationstatus-event", async function (data) {
             break;
     }
 
+    let url = window.location.protocol + '//' + window.location.host + '/user/read/' + data.data.notification_id;
+
     let notificationBox = `
-        <a class="dropdown-item dropdown-item-underline }}" href="{{ route('users.read.noti', $item->id) }}">
+        <a class="dropdown-item dropdown-item-underline" href="`+url+`">
             <div class="read">
                 Your order <strong>`+ status +`</strong>
                 <br>

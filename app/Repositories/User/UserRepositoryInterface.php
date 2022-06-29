@@ -12,4 +12,14 @@ interface UserRepositoryInterface extends RepositoryInterface
     public function getAllUser();
 
     public function updateStatusUser($id, $data);
+
+    public function markAsReadtNotificationById($id);
+
+    public function getDataNotificationById($id);
+
+    public function markAsReadtAllNotification();
+
+    public function setNotification($id, $data);
+
+    public function getIdNotificationWithUser($id);
 }
