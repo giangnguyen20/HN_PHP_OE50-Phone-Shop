@@ -74,4 +74,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         
         return $user;
     }
+
+    public function createUser($attributes = [])
+    {
+        return $this->model->insert($attributes);
+    }
 }

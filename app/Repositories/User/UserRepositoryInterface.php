@@ -24,4 +24,6 @@ interface UserRepositoryInterface extends RepositoryInterface
     public function getIdNotificationWithUser($id);
 
     public function findUserByEmail($email);
+
+    public function createUser($attributes = []);
 }
