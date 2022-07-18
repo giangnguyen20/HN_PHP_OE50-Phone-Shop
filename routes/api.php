@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CategoryAPIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,7 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::middleware('api.checkAdmin')->group(function () {
+        Route::resource('categories-api', CategoryAPIController::class)->except(['show']);
+    });
 });
